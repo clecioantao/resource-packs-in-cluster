@@ -1,18 +1,3 @@
-variable "prefix" {
-  description = "Prefix for naming resources"
-  type        = string
-}
-
-variable "name" {
-  description = "Name of the PostgreSQL resource"
-  type        = string
-}
-
-variable "storage_class_name" {
-  description = "The StorageClass to use for PersistentVolumeClaims"
-  default     = "gp2"
-}
-
 resource "humanitec_resource_definition" "main" {
   id          = "${var.prefix}postgres"
   name        = "${var.prefix}postgres"
@@ -107,7 +92,7 @@ statefulset.yaml:
             resources:
               requests:
                 storage: 1Gi
-            storageClassName: ${var.storage_class_name}
+            storageClassName: gp2
 service.yaml:
   location: namespace
   data:
@@ -145,3 +130,4 @@ EOL
     })
   }
 }
+
