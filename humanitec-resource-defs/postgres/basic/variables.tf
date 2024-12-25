@@ -14,7 +14,3 @@ postgres-{{ "$${context.res.id}" | replace "." "-" | substr 0 43 }}
 EOT
 }
 
-variable "storage_class_name" {
-  description = "The StorageClass to use for PersistentVolumeClaims"
-  default     = "gp2"
-}
